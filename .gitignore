@@ -1,0 +1,12 @@
+target
+comments
+.#comments
+**/*~
+*.bak
+.DS_Store
+batchlog
+batchlog.*
+*.class
+*.component
+*.prefs
+*.classpath
