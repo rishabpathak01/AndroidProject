@@ -94,6 +94,8 @@ public class ListAllUsers extends Activity {
                 System.out.println("Error"+responseString);
             }
         });
+    }
+}
 
 //--------------------------------SIMPLE LIST WITH STRINGS ------------------------------------------------------------------
         /*  String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
@@ -135,10 +137,10 @@ public class ListAllUsers extends Activity {
             }
         });*/
         //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-    }
+    
         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-}
+
  /*     RestClient.get("",null,new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
