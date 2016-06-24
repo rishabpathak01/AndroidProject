@@ -28,7 +28,7 @@ import java.util.HashMap;
 import cz.msebera.android.httpclient.Header;
 
 
-public class ListAllUsers extends Activity {
+public class ListAllUsers extends AppCompatActivity {
 
     ListView list;
     TextView id;
@@ -44,7 +44,7 @@ public class ListAllUsers extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_users);
-        System.out.println("Helloooooooooooooo------------------------------------------------------------------------");
+    //    System.out.println("Helloooooooooooooo------------------------------------------------------------------------");
         RestClient.get("",null,new JsonHttpResponseHandler(){
             JSONObject android;
             @Override
@@ -74,7 +74,7 @@ public class ListAllUsers extends Activity {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view,
                                                     int position, long id) {
-                                Toast.makeText(ListAllUsers.this, "You Clicked at "+oslist.get(+position).get("name"), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ListAllUsers.this, "You Clicked on id "+oslist.get(+position).get("id"), Toast.LENGTH_SHORT).show();
 
                             }
                         });
@@ -94,8 +94,6 @@ public class ListAllUsers extends Activity {
                 System.out.println("Error"+responseString);
             }
         });
-    }
-}
 
 //--------------------------------SIMPLE LIST WITH STRINGS ------------------------------------------------------------------
         /*  String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
@@ -137,10 +135,10 @@ public class ListAllUsers extends Activity {
             }
         });*/
         //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-    
+    }
         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
+}
  /*     RestClient.get("",null,new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
