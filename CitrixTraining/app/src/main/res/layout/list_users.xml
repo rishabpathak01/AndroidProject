@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#0b0b0b"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+
     <ListView
-        android:id="@+id/userlist"
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#93f8ff"
-        android:background="#0b0b0b"
-        />
+
+       >
+    </ListView>
     <!--<TextView
         android:id="@+id/id"
         android:layout_width="fill_parent"
@@ -22,4 +24,4 @@
         android:textStyle="bold"
         android:text="hello"/>-->
 
-</LinearLayout>
+</RelativeLayout>
