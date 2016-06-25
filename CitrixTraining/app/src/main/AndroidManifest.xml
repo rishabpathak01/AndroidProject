@@ -17,6 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ListAllUsers" android:label="Citrix Training"></activity>
+
+        <activity android:name=".SingleListItem"
+            android:label="Citrix Training"></activity>
     </application>
 
 </manifest>

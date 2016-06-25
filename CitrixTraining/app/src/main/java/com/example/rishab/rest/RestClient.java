@@ -21,8 +21,7 @@ public class RestClient
     {
 
         client.addHeader("Accept","application/json");
-        client.post(context,getAbsoluteUrl(url), entity, "application/json",
-                responseHandler);
+        client.post(context,getAbsoluteUrl(url), entity, "application/json",responseHandler);
     }
     private static String getAbsoluteUrl(String relativeUrl) {
         return BASE_URL + relativeUrl;

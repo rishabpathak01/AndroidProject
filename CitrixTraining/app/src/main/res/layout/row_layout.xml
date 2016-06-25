@@ -1,0 +1,48 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="#0b0b0b"
+    android:padding="10sp"
+    android:touchscreenBlocksFocus="false">
+    <TextView
+        android:id="@+id/id"
+        android:layout_width="wrap_content"
+        android:padding="18dp"
+        android:textColor="#93f8ff"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:layout_height="wrap_content"
+        />
+    <TableRow
+        android:id="@+id/hr"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ffffff"></TableRow>
+    <TextView
+        android:id="@+id/first_name"
+        android:text="01"
+        android:layout_width="wrap_content"
+        android:padding="18dp"
+        android:textColor="#93f8ff"
+        android:layout_toRightOf="@id/id"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:layout_height="wrap_content"
+        />
+    <TextView
+        android:id="@+id/last_name"
+        android:text="01"
+        android:layout_width="wrap_content"
+        android:padding="18dp"
+        android:textColor="#93f8ff"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/first_name"
+
+        />
+
+
+</RelativeLayout>

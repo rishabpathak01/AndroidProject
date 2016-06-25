@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0b0b0b"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22dp"
+        android:textColor="#ffffff"
+        android:paddingLeft="10dp"
+        android:padding="50dp"
+        android:textStyle="bold"
+        android:id="@+id/product_label"/>
+
+
+    <LinearLayout
+        android:id="@+id/layoutBottomButtons"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="20dp"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/listqualification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="List Qualifications"
+            android:textSize="18dp"
+            android:padding="10dp"/>
+
+        <Button
+            android:id="@+id/addQualification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Add Qualification"
+            android:textSize="18dp"
+            android:padding="10dp"/>
+
+        <Button
+            android:id="@+id/updateUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Update User Details"
+            android:textSize="18dp"
+            android:padding="10dp"/>
+
+        <Button
+            android:id="@+id/deleteUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Delete User"
+            android:textSize="18dp"
+            android:padding="10dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

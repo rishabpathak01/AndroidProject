@@ -34,7 +34,7 @@ public class ListAllUsers extends AppCompatActivity {
     TextView id;
     TextView fname;
     TextView lname;
-    ArrayList<HashMap<String,String>> oslist=new ArrayList<HashMap<String,String>>();
+    ArrayList<HashMap<String,String>> userlist=new ArrayList<HashMap<String,String>>();
     private static final String TAG_ID ="id";
     private static final String TAG_FNAME="firstName";
     private static final String TAG_LNAME="lastName";
@@ -49,7 +49,7 @@ public class ListAllUsers extends AppCompatActivity {
             JSONObject android;
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                System.out.println("the length of json value"+response.length());
+               // System.out.println("the length of json value"+response.length());
                 for(int i=0;i<response.length();i++)
                 {
 
@@ -58,13 +58,18 @@ public class ListAllUsers extends AppCompatActivity {
                         String id=android.getString(TAG_ID);
                         String fname=android.getString(TAG_FNAME);
                         String lname=android.getString(TAG_LNAME);
+                        String username=android.getString("userName");
+                        String email=android.getString("email");
+                        System.out.println("username---------------------"+username+"    "+email);
                         HashMap<String,String> map=new HashMap<String, String>();
                         map.put(TAG_ID, id);
                         map.put(TAG_FNAME, fname);
                         map.put(TAG_LNAME, lname);
-                        oslist.add(map);
+                        userlist.add(map);
+                        map.put("userName",username);
+                        map.put("email", email);
                         list=(ListView)findViewById(R.id.list);
-                        ListAdapter adapter = new SimpleAdapter(ListAllUsers.this, oslist,
+                        ListAdapter adapter = new SimpleAdapter(ListAllUsers.this, userlist,
                                 R.layout.row_layout,
                                 new String[] { TAG_ID,TAG_FNAME, TAG_LNAME }, new int[] {
                                 R.id.id,R.id.first_name, R.id.last_name});
@@ -74,9 +79,24 @@ public class ListAllUsers extends AppCompatActivity {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view,
                                                     int position, long id) {
-                                Toast.makeText(ListAllUsers.this, "You Clicked on id "+oslist.get(+position).get("id"), Toast.LENGTH_SHORT).show();
+                              //  Toast.makeText(ListAllUsers.this, "You Clicked on id "+oslist.get(+position).get("id"), Toast.LENGTH_SHORT).show();
+                               // View v =findViewById(R.id.id);
+                               // String product=v.toString();
 
+                                String details = "User Details::\n\n"+"User Id:: "+userlist.get(position).get("id")+"\nName:: "+userlist.get(position).get("firstName")
+                                        +" "+userlist.get(position).get("lastName")+"\n"+"Username:: "+userlist.get(position).get("userName")+
+                                     "\n"+"Email:: "+userlist.get(position).get("email");
+                               // System.out.println("ID=-------------------------------------------------------------"+oslist.get(position));
+                                //oslist.get(position) on clicking option 5 gives  System.out: ID=---------------{firstName=Avinash, id=5, lastName=Gautam}
+                                System.out.println("this is product::------------"+details);
+                                // Launching new Activity on selecting single List Item
+                                Intent i = new Intent(getApplicationContext(), SingleListItem.class);
+                                // sending data to new activity
+                                i.putExtra("details", details);
+                                startActivity(i);
                             }
+
+
                         });
 
                         //  System.out.println("Id"+o.getInt("id")+" Name: "+o.getString("firstName")+" "+o.getString("lastName"));
@@ -94,6 +114,9 @@ public class ListAllUsers extends AppCompatActivity {
                 System.out.println("Error"+responseString);
             }
         });
+
+
+
 
 //--------------------------------SIMPLE LIST WITH STRINGS ------------------------------------------------------------------
         /*  String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
