@@ -30,7 +30,8 @@
             android:layout_weight="1"
             android:text="List Qualifications"
             android:textSize="18dp"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:onClick="listQualification"/>
 
         <Button
             android:id="@+id/addQualification"
@@ -39,7 +40,8 @@
             android:layout_weight="1"
             android:text="Add Qualification"
             android:textSize="18dp"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:onClick="addQualification"/>
 
         <Button
             android:id="@+id/updateUser"
@@ -48,7 +50,8 @@
             android:layout_weight="1"
             android:text="Update User Details"
             android:textSize="18dp"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:onClick="updateUser"/>
 
         <Button
             android:id="@+id/deleteUser"
@@ -57,7 +60,8 @@
             android:layout_weight="1"
             android:text="Delete User"
             android:textSize="18dp"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:onClick="deleteUser"/>
 
     </LinearLayout>
 

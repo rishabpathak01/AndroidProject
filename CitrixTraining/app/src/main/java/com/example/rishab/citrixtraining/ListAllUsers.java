@@ -88,11 +88,12 @@ public class ListAllUsers extends AppCompatActivity {
                                      "\n"+"Email:: "+userlist.get(position).get("email");
                                // System.out.println("ID=-------------------------------------------------------------"+oslist.get(position));
                                 //oslist.get(position) on clicking option 5 gives  System.out: ID=---------------{firstName=Avinash, id=5, lastName=Gautam}
-                                System.out.println("this is product::------------"+details);
+                                System.out.println("this is details of selected User::------------"+details);
                                 // Launching new Activity on selecting single List Item
                                 Intent i = new Intent(getApplicationContext(), SingleListItem.class);
                                 // sending data to new activity
                                 i.putExtra("details", details);
+                                i.putExtra("id",userlist.get(position).get("id"));
                                 startActivity(i);
                             }
 

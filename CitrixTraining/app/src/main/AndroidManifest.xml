@@ -20,6 +20,7 @@
 
         <activity android:name=".SingleListItem"
             android:label="Citrix Training"></activity>
+        <activity android:name=".ListQualification" android:label="Citrix Training"></activity>
     </application>
 
 </manifest>
