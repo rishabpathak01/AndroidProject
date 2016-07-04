@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.rishab.rest.RestClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -44,28 +45,98 @@ public class SingleListItem extends AppCompatActivity{
         Button clickButton = (Button) findViewById(R.id.listqualification);
         clickButton.setOnClickListener( new View.OnClickListener() {
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                listQualification(id);
             }
         });
 
 
+        Button clickButton1 = (Button) findViewById(R.id.addQualification);
+        clickButton1.setOnClickListener( new View.OnClickListener() {
+            public void onClick(View v) {
+                createQualification(id);
+            }
+        });
+
+
+//  For updating User details
+        Button clickButton2 = (Button) findViewById(R.id.updateUser);
+        clickButton2.setOnClickListener( new View.OnClickListener() {
+            public void onClick(View v) {
+                update_User(id);
+            }
+        });
+        Button clickButton3 = (Button) findViewById(R.id.deleteUser);
+        clickButton3.setOnClickListener( new View.OnClickListener() {
+            public void onClick(View v) {
+                deleteUser(id);
+            }
+        });
     }
 
-    public void listQualification( String userId)
+    public void listQualification(String userId)
     {
-        System.out.println("this id is sent to listQualification Activity-----------------------------------"+userId);
+        System.out.println("this id is sent to listQualification Activity for listQualification-----------------------------------"+userId);
             Intent i = new Intent(getApplicationContext(), ListQualification.class);
             // sending data to new activity
             i.putExtra("id",userId);
+            i.putExtra("flag","0");
             startActivity(i);
-
-
+    }
+    public void createQualification(String userId)
+    {
+        System.out.println("this id is sent to listQualification for createQualification method-----------------------------------"+userId);
+        Intent i = new Intent(getApplicationContext(), ListQualification.class);
+        // sending data to new activity
+        i.putExtra("id",userId);
+        i.putExtra("flag","1");
+        startActivity(i);
     }
 
+    public void update_User(String userId)
+    {
+        System.out.println("this id is sent to listQualification for updtaeUser method-----------------------------------"+userId);
+        Intent i = new Intent(getApplicationContext(), ListQualification.class);
+        // sending data to new activity
+        i.putExtra("id",userId);
+        i.putExtra("flag","2");
+        startActivity(i);
+    }
+  /*  public void deleteUser(String userId)
+    {
+        System.out.println("this id is sent to listQualification for updtaeUser method-----------------------------------"+userId);
+        Intent i = new Intent(getApplicationContext(), ListQualification.class);
+        // sending data to new activity
+        i.putExtra("id",userId);
+        i.putExtra("flag","3");
+        startActivity(i);
+    }*/
+  public void deleteUser(String userId)
+  {
 
+      setContentView(R.layout.activity_main);
+      RequestParams params=new RequestParams("id",userId);
+      RestClient.delete(userId,params,new JsonHttpResponseHandler() {
+          @Override
+          public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+              System.out.println("This is response: " + response);
+              Intent i=new Intent(SingleListItem.this,MainActivity.class);
+              startActivity(i);
+              finish();
 
+          }
 
+          @Override
+          public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+              System.out.println("response: " + response);
+          }
+
+          @Override
+          public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+              System.out.println("Error" + responseString);
+          }
+
+      });
+  }
 }
 
 

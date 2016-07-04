@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/linearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0b0b0b"
+    android:paddingTop="10dp"
+    android:padding="15dp">
+
+
+    <TextView
+        android:id="@+id/firstname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First Name"
+        android:textColor="#ffffff"
+        android:padding="15dp"
+        android:layout_marginRight="5dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="25dp"/>
+
+
+    <EditText
+        android:id="@+id/ufname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:singleLine="true"
+        android:background="#ffffff"
+        android:padding="12dp"
+        android:maxLength="30">
+
+
+        <requestFocus />
+    </EditText>
+
+
+    <TextView
+        android:id="@+id/lastname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last Name"
+        android:textColor="#ffffff"
+        android:padding="15dp"
+        android:layout_marginRight="5dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="25dp"
+        />
+
+
+    <EditText
+        android:id="@+id/ulname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:singleLine="true"
+        android:background="#ffffff"
+        android:padding="12dp"
+        android:maxLength="30"/>
+
+    <TextView
+        android:id="@+id/runame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Name"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffff"
+        android:padding="15dp"
+        android:textSize="25dp"/>
+
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:singleLine="true"
+        android:layout_marginRight="5dp"
+        android:background="#ffffff"
+        android:padding="12dp"
+        android:maxLength="25"
+        />
+
+
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffff"
+        android:padding="15dp"
+        android:textSize="25dp"/>
+
+
+    <EditText
+        android:id="@+id/uemail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:singleLine="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="#ffffff"
+        android:padding="12dp"/>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="10dp">
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:textSize="22dp"
+            android:padding="13dp"
+
+            />
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:textSize="22dp"
+            android:padding="13dp"
+            android:layout_toRightOf="@id/submit"
+            />
+
+    </RelativeLayout>
+</LinearLayout>
+

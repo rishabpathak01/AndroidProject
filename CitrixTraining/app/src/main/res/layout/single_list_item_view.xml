@@ -41,7 +41,7 @@
             android:text="Add Qualification"
             android:textSize="18dp"
             android:padding="10dp"
-            android:onClick="addQualification"/>
+            android:onClick="createQualification"/>
 
         <Button
             android:id="@+id/updateUser"
@@ -51,7 +51,7 @@
             android:text="Update User Details"
             android:textSize="18dp"
             android:padding="10dp"
-            android:onClick="updateUser"/>
+            android:onClick="update_User"/>
 
         <Button
             android:id="@+id/deleteUser"

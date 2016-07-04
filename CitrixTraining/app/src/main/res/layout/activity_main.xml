@@ -33,7 +33,7 @@
             android:id="@+id/AddUser"
             android:textSize="22dp"
             android:padding="13dp"
-            android:onClick="addUser"
+            android:onClick="addUserClicked"
             />
         <Button
             android:layout_width="164dp"
