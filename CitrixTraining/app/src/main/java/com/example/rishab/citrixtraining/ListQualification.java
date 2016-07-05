@@ -31,7 +31,7 @@ public class ListQualification extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.list_qualification);
         Intent i = getIntent();
-        String id=i.getStringExtra("id");
+        final String id=i.getStringExtra("id");
         //flag is to check which function is requested by button click
         String flag=i.getStringExtra("flag");
 
@@ -52,6 +52,17 @@ public class ListQualification extends AppCompatActivity{
                 break;
             default:
                 break;
+        }
+
+        Button clickButton2 = (Button) findViewById(R.id.deleteQualification);
+        if (clickButton2 != null) {
+            clickButton2.setOnClickListener( new View.OnClickListener() {
+                public void onClick(View v) {
+                    //  setContentView(R.layout.activity_main);
+                    //deleteQualification(id);
+
+                }
+            });
         }
     }
     public void createQualification(final String userId)
@@ -129,7 +140,7 @@ public class ListQualification extends AppCompatActivity{
             });
         }
     }
-    public void listQualification(String userId)
+    public void listQualification(final String userId)
     {
         System.out.println("clicked listQualification");
         RequestParams params = new RequestParams("userId", userId);
@@ -151,8 +162,9 @@ public class ListQualification extends AppCompatActivity{
                             dl="No";
                         else
                             dl="Yes";
-                        quali[i]="id: "+o.getInt("id")+"\nDegree Name: "+o.getString("degreeName")+"\nAdmission Year: "+o.getString("admissionYear")
-                                +"\nUser Id: "+o.getString("userId")+"\nPassout Year: "+o.getString("passoutYear")+"\nInstitute Name: "+o.getString("instituteName")
+                        quali[i]="id: "+o.getInt("id")+"\nUser Id: "+o.getString("userId")+"\nDegree Name: "+o.getString("degreeName")+
+                                "\nAdmission Year: "+o.getString("admissionYear")
+                                +"\nPassout Year: "+o.getString("passoutYear")+"\nInstitute Name: "+o.getString("instituteName")
                                 +"\nDistance: "+dl+"\nPercentage: "+o.getString("pecentage")+"\n\n";
 
                     }
@@ -164,6 +176,61 @@ public class ListQualification extends AppCompatActivity{
                 TextView textView = (TextView) findViewById(R.id.Qualification);
                 for (int i=0;i<response.length();i++)
                     textView.append(quali[i]);
+
+
+                Button clickButton1 = (Button) findViewById(R.id.updateQualification);
+                if (clickButton1 != null ) {
+                    clickButton1.setOnClickListener( new View.OnClickListener() {
+                        public void onClick(View v) {
+                            //  setContentView(R.layout.activity_main);
+                            System.out.println("update qualification method is to be calledd nowwwwww---------------------------------------------id=");
+                            EditText qualId=(EditText) findViewById(R.id.qualificationId);
+                            updateQualification(userId,qualId.getText().toString());
+                            System.out.println("qualiId="+qualId.getText().toString());
+
+                        }
+                    });
+                }
+
+                Button clickButton2 = (Button) findViewById(R.id.deleteQualification);
+                if (clickButton2 != null) {
+                    clickButton2.setOnClickListener( new View.OnClickListener() {
+                        public void onClick(View v) {
+                            //  setContentView(R.layout.activity_main);
+                            System.out.println("qualification is being deleted-----------------------------------------------");
+                            EditText qualId=(EditText) findViewById(R.id.qualificationId);
+                            String qId=qualId.getText().toString();
+                            setContentView(R.layout.activity_main);
+                            RequestParams params=new RequestParams("id",qId);
+                            RestClient.delete("qualification/"+qId,params,new JsonHttpResponseHandler() {
+                                @Override
+                                public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                                    System.out.println("This is response: " + response);
+                                    Intent i=new Intent(ListQualification.this,ListQualification.class);
+                                    startActivity(i);
+                                    finish();
+                                }
+
+                                @Override
+                                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                    System.out.println("response: " + response);
+                                }
+
+                                @Override
+                                public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                                    System.out.println("Error" + responseString);
+                                }
+
+                            });
+
+
+                        }
+                    });
+                }
+
+
+
+
             }
 
             @Override
@@ -177,8 +244,10 @@ public class ListQualification extends AppCompatActivity{
             }
 
         });
+
+
     }
-    public void updateUser(final String userId)
+    public void updateUser(final String userId )
     {
         setContentView(R.layout.add_user);
 
@@ -289,6 +358,87 @@ public class ListQualification extends AppCompatActivity{
                         }
                     });
     }
+
+    public void updateQualification(final String userId,final String qualId)
+    {
+        setContentView(R.layout.update_qualification);
+        System.out.println("update qualification has started.....................................................................................");
+        System.out.println("hellooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+
+        System.out.println("tested"+ qualId);
+
+        Button clickButton = (Button) findViewById(R.id.submit);
+        if (clickButton != null) {
+            clickButton.setOnClickListener( new View.OnClickListener() {
+                public void onClick(View v) {
+                    StringEntity stringEntity=null;
+                    EditText degName = (EditText) findViewById(R.id.degreeName);
+                    EditText admYear = (EditText) findViewById(R.id.admYear);
+                    EditText passYear = (EditText) findViewById(R.id.passYear);
+                    EditText percent = (EditText) findViewById(R.id.percent);
+                    EditText instituteName = (EditText) findViewById(R.id.instituteName);
+                    RadioGroup rg1 = (RadioGroup) findViewById(R.id.rg);
+                    String radiovalue = null;
+                    radiovalue = ((RadioButton) findViewById(rg1.getCheckedRadioButtonId())).getText().toString();
+
+                    JSONObject jsonParams = new JSONObject();
+                    String qId=qualId;
+                    String degname=degName.getText().toString();
+                    String admyear=admYear.getText().toString();
+                    String passyear=passYear.getText().toString();
+                    String per=percent.getText().toString();
+                    String insName=instituteName.getText().toString();
+
+
+                    System.out.println("--------------------------------------------------------------\n" +
+                            "Qid  "+qId+"   Degree name  "+degname+"  Adm Year  "+admyear+" pass year "+passyear+"  Percent  "+per+"    institute" + insName+"distance  "+radiovalue+
+                            "-----------------------------------------------------------------------" );
+                    try {
+                        jsonParams.put("passoutYear", passyear);
+                        jsonParams.put("distance",radiovalue);
+                        jsonParams.put("admissionYear", admyear);
+                        jsonParams.put("degreeName", degname);
+                        jsonParams.put("id", qId);
+                        jsonParams.put("userId", userId);
+                        jsonParams.put("instituteName", insName);
+                        jsonParams.put("pecentage", per);
+
+                        stringEntity = new StringEntity(jsonParams.toString());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    RequestParams params=new RequestParams("id",qId);
+
+                    RestClient.put(getApplicationContext(),"qualification/"+qId,params,stringEntity,new JsonHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                            System.out.println("This is response: " + response);
+                        }
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                            System.out.println("response: " + response);
+                            Intent i=new Intent(getApplicationContext(),ListQualification.class );
+                            startActivity(i);
+                        }
+
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                            System.out.println("Error" + responseString);
+                        }
+
+                    });
+
+
+
+
+
+                }
+            });
+        }
+
+    }
+
 
 
 }

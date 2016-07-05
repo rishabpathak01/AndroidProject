@@ -122,7 +122,6 @@ public class SingleListItem extends AppCompatActivity{
               Intent i=new Intent(SingleListItem.this,MainActivity.class);
               startActivity(i);
               finish();
-
           }
 
           @Override
